@@ -36,53 +36,62 @@ nsew_dict = (
 
 
 def time_runner(
-        food_found: bool = False,
         run_times: int,
+        # food_found: bool = False,
 ):
     """
-asd
-    :param food_found:
-    :type food_found:
-    :param rand_list:
-    :type rand_list:
+runner of simulation
+    :param run_times:
+    :type run_times:
     :return:
     :rtype:
     """
     timing = []
-    dir_dist = pd.DataFrame([0, 0], index=None, columns=['x_moves', 'y_moves'])
+    dir_dist = pd.DataFrame(
+        [[0, 0]],
+        # index=[0],
+        columns=['x_moves', 'y_moves'],
+    )
+
     for i in range(run_times):
-        rand_list = np.random.randint(1, 4, run_times)
+        rand_list = np.random.randint(1, 5, run_times)
+        print(rand_list)
         t_sec_list = direction_distance(
-            iter_count=i,
+            # iter_count=i,
             nsew=rand_list,
-            dir_dist_in=dir_dist,
+            dir_dist=dir_dist,
             threshold_cond=20,
         )
-        timing.append(t_sec_list.__getitem__(i))
-    return pd.concat(pd.Series(timing), axis=1, names=['runtime_sec'])
+        # need to append to get it out of the loop, but can just create df with times
+        # instead of getting the t-sec list item, u need do the average of each iteration and then append to sth else
+        timing.append(t_sec_list.__getitem__(i-1))
+    return pd.DataFrame(timing, columns=['runtime_sec'])
 
 
 def direction_distance(
         # nsew_dict: ty.Dict,
-        iter_count: int,
         nsew: np.ndarray,
-        dir_dist_in: pd.DataFrame,
+        dir_dist: pd.DataFrame,
         threshold_cond: int,
 ):
     """
 
-    :param iter_count:
-    :type iter_count:
+    :param threshold_cond:
+    :type threshold_cond:
     :param nsew:
     :param dir_dist:
     :return:
     :rtype:
     """
-    timing = []
+
     for dist in nsew:
         direction = nsew_dict.__getitem__(dist)
-        print(direction)
-        coords = pd.DataFrame([*direction])
+        # print(direction)
+        coords = pd.DataFrame(
+            [direction.values()],
+            # index=[dist],
+            columns=[*direction.keys()],
+        )
         moves_df = pd.concat(
             [
                 dir_dist,
@@ -90,6 +99,7 @@ def direction_distance(
             ],
             axis=0,
             names=['x_moves', 'y_moves'],
+            ignore_index=True,
         )
         moves_df['x_dist'] = moves_df['x_moves'].cumsum()
         moves_df['y_dist'] = moves_df['y_moves'].cumsum()
@@ -98,15 +108,19 @@ def direction_distance(
             moves_df=moves_df,
             threshold_cond=threshold_cond,
         )
-        if len(moves_df) != sum(food_found):
+        # len(moves_df) !=
+        found_check = food_found.dropna(axis=0, how='any')
+        #if food_found.notnull():
+        if len(moves_df) != len(found_check):
             found = True
-            t_sec = len(moves_df)
-            timing.append(t_sec)
+            t_sec = len(moves_df['x_moves'])
+            times.append(t_sec)
             # timing[iter_count] = t_sec
             break
         else:
+            dir_dist = moves_df.copy()
             continue
-    return timing
+    return times
     # return dir_dist_df
 
 
@@ -121,7 +135,7 @@ def cond_checker(
     :param threshold_cond:
     :type threshold_cond:
     :return:
-    :rtype:
+    :rtype: bool
     """
     dist_df = moves_df.loc[:, ['x_dist', 'y_dist']]
     dist_df_abs = dist_df.abs()
@@ -132,6 +146,6 @@ def cond_checker(
     #     found = True
     # else:
     #     found = False
-
-    return found_bool
+    matched_df = dist_df[~found_bool]
+    return matched_df
 
