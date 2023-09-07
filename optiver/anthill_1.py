@@ -124,6 +124,7 @@ def direction_distance(
     # return dir_dist_df
 
 
+# todo: make this a decorator
 def cond_checker(
         moves_df: pd.DataFrame,
         threshold_cond: int,
