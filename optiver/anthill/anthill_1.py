@@ -1,8 +1,12 @@
 import pandas as pd
 import numpy as np
 import typing as ty
+# import optiver.anthill.anthill_runner as ar
+import optiver.core.monte_carlo as mc
 
-times = []
+from abc import ABC, abstractmethod
+from progressbar import ProgressBar
+
 
 north_dict = dict(  # north
     x_moves=0,
@@ -35,56 +39,31 @@ nsew_dict = (
 )
 
 
-def time_runner(
-        run_times: int,
-        # food_found: bool = False,
+@mc.MonteCarlo
+def anthill_model(
+        # output: list,
+        # directional_dict: dict,
+        # nsew_dict: ty.Dict = None,
+        # dir_dist: pd.DataFrame,
+        question_conditions: str | int = None,
+        random_walk: np.ndarray = None,
 ):
     """
-runner of simulation
-    :param run_times:
-    :type run_times:
+
+    :param random_walk:
+    :param question_conditions:
+    :param nsew_dict:
     :return:
     :rtype:
     """
-    timing = []
+    times = []
     dir_dist = pd.DataFrame(
         [[0, 0]],
         # index=[0],
         columns=['x_moves', 'y_moves'],
     )
 
-    for i in range(run_times):
-        rand_list = np.random.randint(1, 5, run_times)
-        print(rand_list)
-        t_sec_list = direction_distance(
-            # iter_count=i,
-            nsew=rand_list,
-            dir_dist=dir_dist,
-            threshold_cond=20,
-        )
-        # need to append to get it out of the loop, but can just create df with times
-        # instead of getting the t-sec list item, u need do the average of each iteration and then append to sth else
-        timing.append(t_sec_list.__getitem__(i-1))
-    return pd.DataFrame(timing, columns=['runtime_sec'])
-
-
-def direction_distance(
-        # nsew_dict: ty.Dict,
-        nsew: np.ndarray,
-        dir_dist: pd.DataFrame,
-        threshold_cond: int,
-):
-    """
-
-    :param threshold_cond:
-    :type threshold_cond:
-    :param nsew:
-    :param dir_dist:
-    :return:
-    :rtype:
-    """
-
-    for dist in nsew:
+    for dist in random_walk:
         direction = nsew_dict.__getitem__(dist)
         # print(direction)
         coords = pd.DataFrame(
@@ -106,13 +85,15 @@ def direction_distance(
 
         food_found = cond_checker(
             moves_df=moves_df,
-            threshold_cond=threshold_cond,
+            question_conditions=question_conditions,
         )
         # len(moves_df) !=
         found_check = food_found.dropna(axis=0, how='any')
-        #if food_found.notnull():
+
+        # if food_found.notnull():
+
         if len(moves_df) != len(found_check):
-            found = True
+            # found = True
             t_sec = len(moves_df['x_moves'])
             times.append(t_sec)
             # timing[iter_count] = t_sec
@@ -121,32 +102,71 @@ def direction_distance(
             dir_dist = moves_df.copy()
             continue
     return times
-    # return dir_dist_df
 
 
-# todo: make this a decorator
 def cond_checker(
         moves_df: pd.DataFrame,
-        threshold_cond: int,
+        question_conditions: str | int,
 ):
     """
 
     :param moves_df:
     :type moves_df:
-    :param threshold_cond:
-    :type threshold_cond:
+    :param question_conditions:
+    :type question_conditions:
     :return:
     :rtype: bool
     """
     dist_df = moves_df.loc[:, ['x_dist', 'y_dist']]
-    dist_df_abs = dist_df.abs()
-    found_bool = dist_df_abs == threshold_cond
+
+    if question_conditions == 1 or question_conditions == 'q1':
+        conditions_met = _cond_q1(dist_df=dist_df)
+
+    elif question_conditions == 2 or question_conditions == 'q2':
+        conditions_met = _cond_q2(dist_df=dist_df)
+    elif question_conditions == 3 or question_conditions == 'q3':
+        conditions_met = _cond_q3(dist_df=dist_df)
+    else:
+        raise ValueError(f'Unknown Question Reference: {question_conditions}')
 
     # this is the whole column, need to do the row
     # if moves_df['x_dist'].abs() == threshold_cond or moves_df.abs()['y_dist'] == threshold_cond:
     #     found = True
     # else:
     #     found = False
-    matched_df = dist_df[~found_bool]
+    matched_df = dist_df[~conditions_met]
     return matched_df
 
+
+def _cond_q1(
+        dist_df: pd.DataFrame,
+):
+    dist_df_abs = dist_df.abs()
+    found_bool = dist_df_abs == 20
+    return found_bool
+
+
+def _cond_q2(
+        dist_df: pd.DataFrame,
+):
+    coord_sum = dist_df.sum(axis='rows')
+    found_bool = coord_sum == 10
+    return found_bool
+
+
+def _cond_q3(
+        dist_df: pd.DataFrame,
+):
+    """
+    boundary function assumed to be:
+    ((x-2.5)/20)^2 + ((y-2.5)/40)^2 < 1
+    so outside of it would be:
+    ((x-2.5)/20)^2 + ((y-2.5)/40)^2 >= 1
+    :param dist_df:
+    :type dist_df:
+    :return:
+    :rtype:
+    """
+    boundary_function = ((dist_df['x_dist'] - 2.5) / 20) ** 2 + ((dist_df['y_dist'] - 2.5) / 40) ** 2 >= 1
+    # found_bool = coord_sum == 10
+    return boundary_function
