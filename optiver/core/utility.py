@@ -33,31 +33,6 @@ def results_calculator(
         else:
             print(f"The results for {function_ran.__name__}: \n {stats_analysis}.")
     return stats_analysis
-#
-# def output_debugger(
-#         original_func,
-# ):
-#     """
-#
-#     :param original_func:
-#     :return:
-#     :rtype:
-#     """
-#     @ft.wraps(original_func)
-#     def func_info_logger(
-#             *args,
-#             **kwargs,
-#     ):
-#         args_repr = [repr(a) for a in args]
-#         kwargs_repr = [f'{k}={v!r}' for k, v in kwargs.items()]
-#         signature = ', '.join(args_repr + kwargs_repr)
-#         print(f'Running {} with the args: {}, and the kwargs: {})'.format(original_func.__name__, args, kwargs))
-#         # args_repr, kwargs_repr))
-#         value = original_func(*args, **kwargs)
-#         print(f'{original_func.__name__!r} returned {value!r}')
-#         # original_func(*args, **kwargs)
-#         return original_func(*args, **kwargs)
-#     return func_info_logger
 
 
 def simulation_decorator(
@@ -98,3 +73,28 @@ if it is called with an argument, the returned function is modified accordingly
         return sim_wrapper
     else:
         return sim_wrapper(_selected_function)
+
+# def output_debugger(
+#         original_func,
+# ):
+#     """
+#
+#     :param original_func:
+#     :return:
+#     :rtype:
+#     """
+#     @ft.wraps(original_func)
+#     def func_info_logger(
+#             *args,
+#             **kwargs,
+#     ):
+#         args_repr = [repr(a) for a in args]
+#         kwargs_repr = [f'{k}={v!r}' for k, v in kwargs.items()]
+#         signature = ', '.join(args_repr + kwargs_repr)
+#         print(f'Running {} with the args: {}, and the kwargs: {})'.format(original_func.__name__, args, kwargs))
+#         # args_repr, kwargs_repr))
+#         value = original_func(*args, **kwargs)
+#         print(f'{original_func.__name__!r} returned {value!r}')
+#         # original_func(*args, **kwargs)
+#         return original_func(*args, **kwargs)
+#     return func_info_logger

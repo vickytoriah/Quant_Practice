@@ -1,11 +1,6 @@
 import pandas as pd
 import numpy as np
-import typing as ty
-# import optiver.anthill.anthill_runner as ar
 import optiver.core.monte_carlo as mc
-
-from abc import ABC, abstractmethod
-from progressbar import ProgressBar
 
 
 north_dict = dict(  # north
@@ -41,10 +36,6 @@ nsew_dict = (
 
 @mc.MonteCarlo
 def anthill_model(
-        # output: list,
-        # directional_dict: dict,
-        # nsew_dict: ty.Dict = None,
-        # dir_dist: pd.DataFrame,
         random_walk: np.ndarray = None,
         question_conditions: str | int = None,
 ):
@@ -52,23 +43,20 @@ def anthill_model(
 
     :param random_walk:
     :param question_conditions:
-    :param nsew_dict:
     :return:
     :rtype:
     """
     times = []
     dir_dist = pd.DataFrame(
         [[0, 0]],
-        # index=[0],
         columns=['x_moves', 'y_moves'],
     )
 
     for dist in random_walk:
         direction = nsew_dict.__getitem__(dist)
-        # print(direction)
+
         coords = pd.DataFrame(
             [direction.values()],
-            # index=[dist],
             columns=[*direction.keys()],
         )
         moves_df = pd.concat(
@@ -87,16 +75,12 @@ def anthill_model(
             moves_df=moves_df,
             question_conditions=question_conditions,
         )
-        # len(moves_df) !=
+
         found_check = food_found.dropna(axis=0, how='any')
 
-        # if food_found.notnull():
-
         if len(moves_df) != len(found_check):
-            # found = True
             t_sec = len(moves_df['x_moves'])
             times.append(t_sec)
-            # timing[iter_count] = t_sec
             break
         else:
             dir_dist = moves_df.copy()
@@ -124,18 +108,17 @@ def cond_checker(
 
     elif question_conditions == 2 or question_conditions == 'q2':
         conditions_met = _cond_q2(dist_df=dist_df)
+
     elif question_conditions == 3 or question_conditions == 'q3':
         conditions_met = _cond_q3(dist_df=dist_df)
+
     else:
         raise ValueError(f'Unknown Question Reference: {question_conditions}')
 
-    # this is the whole column, need to do the row
-    # if moves_df['x_dist'].abs() == threshold_cond or moves_df.abs()['y_dist'] == threshold_cond:
-    #     found = True
-    # else:
-    #     found = False
-    # print(f'conditions used: {conditions_met.__repr__()}')
-    matched_df = dist_df[~conditions_met]
+    if not question_conditions == 2:
+        matched_df = dist_df[~conditions_met]
+    else:
+        matched_df = dist_df[~conditions_met['coord_sum']]
     return matched_df
 
 
@@ -153,8 +136,9 @@ def _cond_q2(
     coord_sum = dist_df['x_dist'] + dist_df['y_dist']
     coord_df = coord_sum.to_frame('coord_sum')
 
-    # dist_df.sum(axis='rows')
-    found_bool = coord_sum == 10
+    found_bool = coord_df == 10
+    found_bool['filler'] = 0
+
     return found_bool
 
 
@@ -172,5 +156,5 @@ def _cond_q3(
     :rtype:
     """
     boundary_function = ((dist_df['x_dist'] - 2.5) / 20) ** 2 + ((dist_df['y_dist'] - 2.5) / 40) ** 2 >= 1
-    # found_bool = coord_sum == 10
+
     return boundary_function
