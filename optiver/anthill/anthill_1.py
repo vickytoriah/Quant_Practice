@@ -45,8 +45,8 @@ def anthill_model(
         # directional_dict: dict,
         # nsew_dict: ty.Dict = None,
         # dir_dist: pd.DataFrame,
-        question_conditions: str | int = None,
         random_walk: np.ndarray = None,
+        question_conditions: str | int = None,
 ):
     """
 
@@ -134,6 +134,7 @@ def cond_checker(
     #     found = True
     # else:
     #     found = False
+    # print(f'conditions used: {conditions_met.__repr__()}')
     matched_df = dist_df[~conditions_met]
     return matched_df
 
@@ -149,7 +150,10 @@ def _cond_q1(
 def _cond_q2(
         dist_df: pd.DataFrame,
 ):
-    coord_sum = dist_df.sum(axis='rows')
+    coord_sum = dist_df['x_dist'] + dist_df['y_dist']
+    coord_df = coord_sum.to_frame('coord_sum')
+
+    # dist_df.sum(axis='rows')
     found_bool = coord_sum == 10
     return found_bool
 
