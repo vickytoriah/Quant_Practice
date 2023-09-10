@@ -2,7 +2,7 @@
 
 This repo is mainly meant for personal tracking of my OOP learning process in Python and C++ (will add later on). 
 
-During my MSc Finance at Imperial College London, where I did additional courses in Computational Finance in C++ 17 and 20 (Certified) and VBA in Excel, as well as various personal projects in Python 3.x, I became more keen on a career path as a quantitative analyst. 
+During my MSc Finance at Imperial College London, where I did additional courses, including Computational Finance in C++ 17 and 20 (Certified), and VBA in Excel, as well as various personal projects in Python 3.x, I became more keen on a career path as a quantitative analyst. 
 
 So I want to advance my applicable skillsets as by developing and practicing my coding skills through continuous projects, and will use this repo to track my process. 
 
@@ -12,20 +12,18 @@ Therefore, I am more than willing to receive feedback, comments and suggestions 
 <details>
   <summary>Structure of Repo Contents</summary>
   
-## Whilst this is still the preliminary idea, if it changes, I will update the Readme file.
-  
-### I plan on making a core package that all packages will have access to, as they will be utility tools and functions that may be applicable to many cases.
+_I plan on making a core package that all packages will have access to, as they will be utility tools and functions that may be applicable to many cases._
   
 Each package will relate/refer to a (popular) quantitative finance question, which I will provide details for. They will each have 4 versions of my solution, all of which will be object-oriented programming. The solution will solely reflect my understanding of   the problem, my intuition and thought process when solving it. 
   
-*Please note: not all 4 versions will be out, as I started this in September 2023, and am doing this as a side-thing when I have time*
+*Please note: not all 4 versions will be out, as I started this in September 2023, and am not doing this full-time*
 
 </details>
 
 <details>
   <summary>Purpose of Repo</summary>
   
-  ## What are these 4 versions? And, why 4 versions of the same solution?
+  ## What are the 4 versions? And, why 4 versions of the same solution?
   
   The 4 versions will be referred to in this fixed order and are the following:
   1. Python: OOP (standard, e.g., dynamic, classes, etc.)
@@ -43,7 +41,7 @@ As I am not a computing student, but am really interested in learning the scienc
   
 I am a multilinguist, and easily pick up new subjects, languages and concepts, thus I do not find functional programming too difficult to learn within a few weeks or shorter. I learned SQL, R, Python, and VBA within a few hours for certain projects, within a few hours of starting them.
 
-This is also why I decided to learn computation finance in C++, and became certified through an exam at Imperial College London, with only 16 hours of revision (with an amazing textbook, might link later on). 
+This is also why I decided to learn computation finance in C++, and became certified at Imperial College London. 
   
 </details>
 
