@@ -37,11 +37,11 @@ I learn best through practical applications, and whilst the answer and my interp
 
 Since my answer will be consistent between the 4 versions, it will be the easy factor to keep constant as I learn how to apply advanced programming methods and convey my thought-process. Therefore, if I can re-iterate my answer in all 4 versions, then I will be able to learn the systematic logic for each version type, and improve my computing, programming, and quantitative skills simultaneously.  
 
-As I am not a computing student, but am really interested in learning the science behind programming rather than just the simple syntax differences, I am doing this to develop my computing knowledge and skills. (That is why it is all OOP and why I will add C++)
+As I am really interested in learning the in-depth computer science rather than just the simple syntax differences between languages, I am focusing on OOP and C++ to further develop the skills' depth.
   
-I am a multilinguist, and easily pick up new subjects, languages and concepts, thus I do not find functional programming too difficult to learn within a few weeks or shorter. I learned SQL, R, Python, and VBA within a few hours for certain projects, within a few hours of starting them.
+I am a multilinguist (native fluency in English, German and Chinese, conversational fluency in French), and easily pick up new subjects, languages and concepts, thus I do not find functional programming too difficult to learn within a few weeks or shorter. I learned SQL, R, Python, and VBA within a few hours for certain projects.
 
-This is also why I decided to learn computation finance in C++, and became certified at Imperial College London. 
+This is also why I decided to learn computational finance in C++, and became certified at Imperial College London. 
   
 </details>
 
@@ -53,7 +53,7 @@ This is also why I decided to learn computation finance in C++, and became certi
   
 1. [Anthill_Food_Finding](https://github.com/vickytoriah/Quant_Practice/tree/main/Anthill_Food_Finding/)
   
-    - Python: OOP (standard + decorators)[^2]
+    - Python: 2nd Version [^2]
   
       - Upcoming versions:
     
