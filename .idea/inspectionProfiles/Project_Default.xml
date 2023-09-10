@@ -47,7 +47,6 @@
           <option value="http://schemas.android.com/" />
           <option value="http://jakarta.apache.org/" />
           <option value="http://cxf.apache.org/schemas/" />
-          <option value="http://oherbagepc{site_id}" />
           <option value="http://" />
         </list>
       </option>
