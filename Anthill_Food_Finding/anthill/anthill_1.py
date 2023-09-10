@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-import Anthill_Food_Finding.core.monte_carlo as mc
 
+times = []
 
 north_dict = dict(  # north
     x_moves=0,
@@ -34,27 +34,52 @@ nsew_dict = (
 )
 
 
-@mc.MonteCarlo
-def anthill_model(
-        random_walk: np.ndarray = None,
-        question_conditions: str | int = None,
+def time_runner(
+        run_times: int,
 ):
     """
-
-    :param random_walk:
-    :param question_conditions:
+runner of simulation
+    :param run_times:
+    :type run_times:
     :return:
     :rtype:
     """
-    times = []
+    timing = []
     dir_dist = pd.DataFrame(
         [[0, 0]],
         columns=['x_moves', 'y_moves'],
     )
 
-    for dist in random_walk:
-        direction = nsew_dict.__getitem__(dist)
+    for i in range(run_times):
+        rand_list = np.random.randint(1, 5, run_times)
+        print(rand_list)
+        t_sec_list = direction_distance(
+            # iter_count=i,
+            nsew=rand_list,
+            dir_dist=dir_dist,
+            threshold_cond=20,
+        )
+        timing.append(t_sec_list.__getitem__(i-1))
+    return pd.DataFrame(timing, columns=['runtime_sec'])
 
+
+def direction_distance(
+        nsew: np.ndarray,
+        dir_dist: pd.DataFrame,
+        threshold_cond: int,
+):
+    """
+
+    :param threshold_cond:
+    :type threshold_cond:
+    :param nsew:
+    :param dir_dist:
+    :return:
+    :rtype:
+    """
+
+    for dist in nsew:
+        direction = nsew_dict.__getitem__(dist)
         coords = pd.DataFrame(
             [direction.values()],
             columns=[*direction.keys()],
@@ -73,14 +98,16 @@ def anthill_model(
 
         food_found = cond_checker(
             moves_df=moves_df,
-            question_conditions=question_conditions,
+            threshold_cond=threshold_cond,
         )
 
         found_check = food_found.dropna(axis=0, how='any')
 
         if len(moves_df) != len(found_check):
+
             t_sec = len(moves_df['x_moves'])
             times.append(t_sec)
+
             break
         else:
             dir_dist = moves_df.copy()
@@ -90,71 +117,22 @@ def anthill_model(
 
 def cond_checker(
         moves_df: pd.DataFrame,
-        question_conditions: str | int,
+        threshold_cond: int,
 ):
     """
 
     :param moves_df:
     :type moves_df:
-    :param question_conditions:
-    :type question_conditions:
+    :param threshold_cond:
+    :type threshold_cond:
     :return:
     :rtype: bool
     """
     dist_df = moves_df.loc[:, ['x_dist', 'y_dist']]
+    dist_df_abs = dist_df.abs()
 
-    if question_conditions == 1 or question_conditions == 'q1':
-        conditions_met = _cond_q1(dist_df=dist_df)
+    found_bool = dist_df_abs == threshold_cond
+    matched_df = dist_df[~found_bool]
 
-    elif question_conditions == 2 or question_conditions == 'q2':
-        conditions_met = _cond_q2(dist_df=dist_df)
-
-    elif question_conditions == 3 or question_conditions == 'q3':
-        conditions_met = _cond_q3(dist_df=dist_df)
-
-    else:
-        raise ValueError(f'Unknown Question Reference: {question_conditions}')
-
-    if not question_conditions == 2:
-        matched_df = dist_df[~conditions_met]
-    else:
-        matched_df = dist_df[~conditions_met['coord_sum']]
     return matched_df
 
-
-def _cond_q1(
-        dist_df: pd.DataFrame,
-):
-    dist_df_abs = dist_df.abs()
-    found_bool = dist_df_abs == 20
-    return found_bool
-
-
-def _cond_q2(
-        dist_df: pd.DataFrame,
-):
-    coord_sum = dist_df['x_dist'] + dist_df['y_dist']
-    coord_df = coord_sum.to_frame('coord_sum')
-
-    found_bool = coord_df == 10
-    found_bool['filler'] = 0
-
-    return found_bool
-
-
-def _cond_q3(
-        dist_df: pd.DataFrame,
-):
-    """
-    boundary function assumed to be:
-    ((x-2.5)/20)^2 + ((y-2.5)/40)^2 < 1
-    so outside of it would be:
-    ((x-2.5)/20)^2 + ((y-2.5)/40)^2 >= 1
-    :param dist_df:
-    :type dist_df:
-    :return:
-    :rtype:
-    """
-    boundary_function = ((dist_df['x_dist'] - 2.5) / 20) ** 2 + ((dist_df['y_dist'] - 2.5) / 40) ** 2 >= 1
-
-    return boundary_function
