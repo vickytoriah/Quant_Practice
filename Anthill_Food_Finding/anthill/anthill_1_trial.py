@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import typing as ty
-import optiver.core as ut
+import Anthill_Food_Finding.core as ut
 
 from abc import ABC, abstractmethod
 from progressbar import ProgressBar

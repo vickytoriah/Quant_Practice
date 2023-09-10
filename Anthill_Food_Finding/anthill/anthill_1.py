@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import optiver.core.monte_carlo as mc
+import Anthill_Food_Finding.core.monte_carlo as mc
 
 
 north_dict = dict(  # north
