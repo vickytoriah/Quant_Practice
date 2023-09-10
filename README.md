@@ -1,6 +1,10 @@
 # Hi and welcome to my Quant_Practice repo!
 
-This repo is mainly meant for personal tracking of my OOP learning process in Python and C++ (will add later on). As I am self-taught, but very keen on advancing as a quantitative analyst by enhancing my skills through continuous practice, I decided to use this repo to track my process. 
+This repo is mainly meant for personal tracking of my OOP learning process in Python and C++ (will add later on). 
+
+During my MSc Finance at Imperial College London, where I did additional courses in Computational Finance in C++ and VBA in Excel, as well as various personal projects in Python 3.x, I became more keen on a career path as a quantitative analyst. 
+
+So I want to advance my applicable skillsets as by developing and practicing my coding skills through continuous projects, and will use this repo to track my process. 
 
 Therefore, I am more than willing to receive feedback, comments and suggestions from (more) experienced programmers. 
 
