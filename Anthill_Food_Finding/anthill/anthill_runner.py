@@ -1,5 +1,4 @@
 import Anthill_Food_Finding.anthill.anthill_2 as ah
-import Anthill_Food_Finding.core.monte_carlo as mc
 
 anthill1 = ah.anthill_model(
     question_conditions='q1'

@@ -1,4 +1,4 @@
-import Anthill_Food_Finding.core.utility as ut
+import core.utility as ut
 import numpy as np
 import functools as ft
 

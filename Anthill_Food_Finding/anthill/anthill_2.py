@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
-import Anthill_Food_Finding.core.monte_carlo as mc
-
+import core as mc
 
 north_dict = dict(  # north
     x_moves=0,
