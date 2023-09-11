@@ -4,7 +4,7 @@ This repo is mainly meant for personal tracking of my OOP learning process in Py
 
 During my MSc Finance at Imperial College London, where I did additional courses, including Computational Finance in C++ 17 and 20 (Certified), and VBA in Excel, as well as various personal projects in Python 3.x, I became more keen on a career path as a quantitative analyst. 
 
-So I want to advance my applicable skillsets as by developing and practicing my coding skills through continuous projects, and will use this repo to track my process. 
+So I want to advance my applicable skillsets by developing and practicing my coding skills through continuous projects, and will use this repo to track my process. 
 
 Therefore, I am more than willing to receive feedback, comments and suggestions from (more) experienced programmers. [^1]
 
