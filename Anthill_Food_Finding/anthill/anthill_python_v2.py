@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import core as mc
+import core.monte_carlo as mc
 
 north_dict = dict(  # north
     x_moves=0,

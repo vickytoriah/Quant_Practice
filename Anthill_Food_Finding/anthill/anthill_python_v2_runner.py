@@ -1,4 +1,4 @@
-import Anthill_Food_Finding.anthill.anthill_2 as ah
+import Anthill_Food_Finding.anthill.anthill_python_v2 as ah
 
 anthill1 = ah.anthill_model(
     question_conditions='q1'
