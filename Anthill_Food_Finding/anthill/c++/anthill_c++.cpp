@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class anthill{
+class Anthill {
     int x, y;
 //    string questionType;
     public:

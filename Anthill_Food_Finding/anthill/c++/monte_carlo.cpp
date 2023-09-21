@@ -1,3 +1,5 @@
+//#include "anthill_c++.cpp"
+
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
@@ -7,7 +9,7 @@ double monteCarloEstimate(double lowBound, double upBound, int iterations);
 // using namespace std;
 
 int main() {
-double lowerBound, upperBound;
+    double lowerBound, upperBound;
     int iterations;
 
     lowerBound = 1;
