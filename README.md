@@ -53,16 +53,16 @@ This is also why I decided to learn computational finance in C++, and became cer
   
 1. [Anthill_Food_Finding](https://github.com/vickytoriah/Quant_Practice/tree/main/Anthill_Food_Finding/)
   
-    - Python: 2nd Version [^2]
+    - Python: 1st Version
+    - Python: 2nd Version
   
       - Upcoming versions:
-    
-        Python 1st version [^2]
       
         Python 3rd version
       
         (C++ will be added after doing another question in Python first)
+2. Systematic Trading Model [^2]
 
 [^1]: Please also let me know if my repo has security issues, as I am still relatively new to the more advanced settings on GitHub.
-[^2]: I overwrote the 1st version, and therefore, currently only the second version is up. Will be updated soon :)
+[^2]: This is ready in another repo, however due to MNPI, I will slowly upload my IP for various segments of my model and its utility and core functions in this repo
 </details>
