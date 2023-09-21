@@ -59,8 +59,8 @@ This is also why I decided to learn computational finance in C++, and became cer
       - Upcoming versions:
       
         Python 3rd version
+        [C++ version](https://github.com/vickytoriah/Quant_Practice/tree/main/Anthill_Food_Finding/anthill/c%2B%2B)
       
-        (C++ will be added after doing another question in Python first)
 2. Systematic Trading Model [^2]
 
 [^1]: Please also let me know if my repo has security issues, as I am still relatively new to the more advanced settings on GitHub.
