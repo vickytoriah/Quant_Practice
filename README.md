@@ -57,12 +57,52 @@ This is also why I decided to learn computational finance in C++, and became cer
     - Python: 2nd Version
   
       - Upcoming versions:
+							- Python 3rd version
+							- [C++ version](https://github.com/vickytoriah/Quant_Practice/tree/main/Anthill_Food_Finding/anthill/c%2B%2B)[^2]
       
-        Python 3rd version
-        [C++ version](https://github.com/vickytoriah/Quant_Practice/tree/main/Anthill_Food_Finding/anthill/c%2B%2B)
-      
-2. Systematic Trading Model [^2]
+2. Systematic Trading Model [^3]
 
 [^1]: Please also let me know if my repo has security issues, as I am still relatively new to the more advanced settings on GitHub.
-[^2]: This is ready in another repo, however due to MNPI, I will slowly upload my IP for various segments of my model and its utility and core functions in this repo
+[^2]: Please see the next section for details. 
+[^3]: This is ready in another repo, however due to MNPI, I will slowly upload my IP for various segments of my model and its utility and core functions in this repo
 </details>
+
+<details>
+	<summary>Next steps: Monte Carlo Implementation Using Matrix in C++	
+	<\summary>
+
+### Overview
+
+The [C++ folder in this repository]() is a work-in-progress implementation of Monte Carlo simulation using matrices in C++. The code is organized into separate files, each with its own `main` function, to facilitate unit testing and modular development.
+
+### Project Structure
+
+- `monte_carlo.cpp`: Core implementation of the Monte Carlo simulation using matrices.
+
+- `anthill.cpp`: Entry points for running sample simulations and testing individual components. It will import `anthill.h`, `monte_carlo.h`, and `coordsMatrix.h`. 
+
+- `coordsMatrix`.cpp: Matrix constructor and extender that generates a Random Walk and determines the movement based on defined objects of class CoordsMatrix in `CoordsMatrix.h`. 
+
+- *.h: Each Header file will define the objects and variables for it's respective *.cpp. 
+	- `anthill.h`: defines the class Anthill and its objects and methods.
+
+	- `*.h`: Most of these will be combined into a utility.cpp once everything is tested and structured efficiently. Currently, they are kept separate for testing and learning purposes. 
+
+
+**Please note**
+
+*The code is currently a preliminary draft and is divided into separate files for testing purposes.*
+
+The goal is to create optimal functions for Monte Carlo simulations and various utility functions that future Quant Fin problems can use to solve a wide range of applications.
+
+As I work towards the solutions in C++, it is likely that different versions of the solution will exist and be kept (like in Python).
+
+As the solutions for each function become functional, the files will be edited and linked accordingly.	
+
+Please kindly understand that this is a learning process, and an interest-driven personal project, so the commits are to track my progress and solutions rather than just the complete solutions on my first tries. 
+
+Thank you! 
+
+_I will most likely restructure this folder in a similar way to the Python ones, where several versions of a solution will exist in C++._
+
+<\details>
