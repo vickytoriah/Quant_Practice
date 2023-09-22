@@ -2,9 +2,9 @@
 
 This repo is mainly meant for personal tracking of my OOP learning process in Python and C++ (will add later on).
 
-During my MSc Finance at Imperial College London, where I did additional courses, including Computational Finance in C++
-17 and 20 (Certified), and VBA in Excel, as well as various personal projects in Python 3.x, I became more keen on a
-career path as a quantitative analyst.
+During my M.Sc. Finance at Imperial College London, I became very keen on a career path as a quantitative analyst, so I 
+took additional courses, including Computational Finance in C++ 17 and 20 (Certified) as well as VBA in Excel. 
+Simultaneously, I did various personal projects in Python 3.x
 
 So I want to advance my applicable skillsets by developing and practicing my coding skills through continuous projects,
 and will use this repo to track my process.
@@ -73,7 +73,7 @@ _This list will be continuously updated over time_
 
         - Upcoming versions:
             - Python 3rd version
-            - [C++ version](https://github.com/vickytoriah/Quant_Practice/tree/main/Anthill_Food_Finding/anthill/c%2B%2B) [^2]
+            - [C++ version](https://github.com/vickytoriah/Quant_Practice/tree/main/Anthill_Food_Finding/anthill/c%2B%2B)[^2]
 
 2. Systematic Trading Model [^3]
 
@@ -120,8 +120,7 @@ Currently, they are kept separate for testing and learning purposes.
 The goal is to create optimal functions for Monte Carlo simulations and various utility functions that future Quant Fin
 problems can use to solve a wide range of applications.
 
-As I work towards the solutions in C++, it is likely that different versions of the solution will exist and be kept (
-like in Python).
+As I work towards the solutions in C++, it is likely that different versions of the solution will exist and be kept (like in Python).
 
 As the solutions for each function become functional, the files will be edited and linked accordingly.
 
