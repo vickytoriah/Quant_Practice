@@ -68,8 +68,7 @@ This is also why I decided to learn computational finance in C++, and became cer
 </details>
 
 <details>
-	<summary>Next steps: Monte Carlo Implementation Using Matrix in C++	
-	<\summary>
+	<summary>Next steps: Monte Carlo Implementation Using Matrix in C++<\summary>
 
 ### Overview
 
