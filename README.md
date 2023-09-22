@@ -70,19 +70,19 @@ This is also why I decided to learn computational finance in C++, and became cer
 <details>
 	<summary>Next steps: Monte Carlo Implementation Using Matrix in C++<\summary>
 
-### Overview
+	### Overview
 
 The [C++ folder in this repository]() is a work-in-progress implementation of Monte Carlo simulation using matrices in C++. The code is organized into separate files, each with its own `main` function, to facilitate unit testing and modular development.
 
-### Project Structure
+	### Project Structure
 
-- `monte_carlo.cpp`: Core implementation of the Monte Carlo simulation using matrices.
+-`monte_carlo.cpp`: Core implementation of the Monte Carlo simulation using matrices.
 
-- `anthill.cpp`: Entry points for running sample simulations and testing individual components. It will import `anthill.h`, `monte_carlo.h`, and `coordsMatrix.h`. 
+-`anthill.cpp`: Entry points for running sample simulations and testing individual components. It will import `anthill.h`, `monte_carlo.h`, and `coordsMatrix.h`. 
 
-- `coordsMatrix`.cpp: Matrix constructor and extender that generates a Random Walk and determines the movement based on defined objects of class CoordsMatrix in `CoordsMatrix.h`. 
+-`coordsMatrix`.cpp: Matrix constructor and extender that generates a Random Walk and determines the movement based on defined objects of class CoordsMatrix in `CoordsMatrix.h`. 
 
-- *.h: Each Header file will define the objects and variables for it's respective *.cpp. 
+-`*.h`: Each Header file will define the objects and variables for it's respective *.cpp. 
 	- `anthill.h`: defines the class Anthill and its objects and methods.
 
 	- `*.h`: Most of these will be combined into a utility.cpp once everything is tested and structured efficiently. Currently, they are kept separate for testing and learning purposes. 
