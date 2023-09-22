@@ -68,7 +68,7 @@ This is also why I decided to learn computational finance in C++, and became cer
 </details>
 
 <details>
-	<summary>Next steps: Monte Carlo Implementation Using Matrix in C++<\summary>
+	<summary>Next steps: Monte Carlo Implementation Using Matrix in C++</summary>
 
 	### Overview
 
@@ -104,4 +104,4 @@ Thank you!
 
 _I will most likely restructure this folder in a similar way to the Python ones, where several versions of a solution will exist in C++._
 
-<\details>
+</details>
