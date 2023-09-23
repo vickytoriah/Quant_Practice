@@ -1,5 +1,5 @@
 //#include "anthill_c++.cpp"
-
+#pragma once
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
