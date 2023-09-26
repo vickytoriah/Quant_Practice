@@ -5,6 +5,7 @@
 #include <cstdlib>
 
 double myFunction(double x);
+
 void monteCarloEstimateStDev(double lowBound, double upBound, int iterations, double mcStats[]);
 // using namespace std;
 
@@ -17,12 +18,14 @@ int main() {
 
     double mcStats[2]; // position 0 holds the estimate, position 1 holds the STD
 
-    for(int i = 1; i < 6; i++) {
+    for (int i = 1; i < 6; i++) {
         iterations = 2 * pow(4, i);
         monteCarloEstimateStDev(lowerBound, upperBound, iterations, mcStats);
 
-        printf("Output for %.1f -> %.1f is %.3f, StDev = %.4f, (%i iterations) \n",
-        lowerBound, upperBound, mcStats[0], mcStats[1], iterations);
+        printf(
+                "Output for %.1f -> %.1f is %.3f, StDev = %.4f, (%i iterations) \n",
+                lowerBound, upperBound, mcStats[0], mcStats[1], iterations
+        );
 
     }
     return 0;
@@ -36,7 +39,7 @@ double myFunction(double x) {
     return pow(x, 4) * exp(-x);
 }
 
-void monteCarloEstimate(double lowBound, double upBound, int iterations, double statsArray []) {
+void monteCarloEstimate(double lowBound, double upBound, int iterations, double statsArray[]) {
 // function to execute Monte carlo integration on predefined function
 
     double totalSum = 0;
@@ -61,11 +64,11 @@ void monteCarloEstimate(double lowBound, double upBound, int iterations, double 
     }
 
     double estimate = (upBound - lowBound) * totalSum / iterations;
-	double expected = totalSum / iterations;
+    double expected = totalSum / iterations;
 
-	double expectedSquare = totalSumSquared / iterations;
+    double expectedSquare = totalSumSquared / iterations;
 
-	double stddev = (upBound - lowBound) * pow ((expectedSquare - pow(expected, 2)) / (iterations - 1), 0.5);
+    double stddev = (upBound - lowBound) * pow((expectedSquare - pow(expected, 2)) / (iterations - 1), 0.5);
 
     statsArray[0] = estimate;
     statsArray[1] = stddev;
