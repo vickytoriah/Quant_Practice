@@ -13,21 +13,26 @@ class MonteCarlo(object):
             random_walk_lower_limit=1,
             iterations=100,
     ):
-        ft.update_wrapper(
-            self,
-            objective_func,
-        )
         self._memory = []
         self.objective_func = objective_func
         self.iterations = iterations
         self.random_walk_upper_limit = random_walk_upper_limit
         self.random_walk_lower_limit = random_walk_lower_limit
         self.random_walk = self.simulator_random_walk()
+        ft.update_wrapper(
+            self,
+            objective_func,
+        )
 
     def __call__(
             self,
             question_conditions,
     ):
+        """
+        makes the class callable, otherwise it would only be initialised as a class object when used
+        :param question_conditions:
+        :return:
+        """
         print(question_conditions)
         self._memory.clear()
 

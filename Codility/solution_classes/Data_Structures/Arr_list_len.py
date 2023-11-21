@@ -45,3 +45,11 @@ it will always be possible to construct the list and its length will be finite.
 In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
 """
 
+def solution(A):
+    # Implement your solution here
+    current = A[0]
+    counter = 1
+    while current != -1:
+        counter += 1
+        current = A[current]
+    return counter
