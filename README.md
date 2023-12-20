@@ -12,7 +12,7 @@ and will use this repo to track my process.
 Therefore, I am more than willing to receive feedback, comments and suggestions from (more) experienced
 programmers. [^1]
 
-**I am currently working full time as a Quantitative Strategist at a Web3 Protocol both in DevOps and Portfolio Managment, so I am not very active with this repo for the time being.**
+**I am currently working full time as a Quantitative Strategist at Fyde Treasury, a Web3 Protocol, both in DevOps and Portfolio Management, so I am not very active with this repo for the time being.**
 <details>
   <summary>Structure of Repo Contents</summary>
 
