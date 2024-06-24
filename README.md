@@ -1,7 +1,7 @@
 # Hi and welcome to my Quant_Practice repo!
 <p align="center">
 <a href="https://github.com/vickytoriah">
-    <img src="https://readme-typing-svg.demolab.com?font=Garamond&size=20&duration=2000&pause=80&multiline=true&width=500&height=120&lines=Victoria+Gong;Quant+Strategist+%7C+MSc+Imperial+College+London;Fyde+Treasury+%7C+Web3+Development+%&%+Quant+Researcher;Self-Learning+Repository+%7C+Inactive" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Garamond&size=20&duration=2000&pause=80&multiline=true&width=500&height=120&lines=Victoria+Gong;Quant+Strategist+%7C+MSc+Imperial+College+London;Fyde+Treasury+%7C+Portfolio+Management+%7C+Quant+Researcher;Self-Learning+Repository+%7C+Inactive" alt="Typing SVG" />
 </a>
 <br/>
 
